@@ -1,1 +1,12 @@
-/* it is totally okay for this to be completely empty right now, add what you need */
+body { 
+    margin:0; 
+    padding:0; 
+}
+
+#map { 
+    position: absolute; 
+    top:0; 
+    bottom:0; 
+    right:0; 
+    left:0; 
+}

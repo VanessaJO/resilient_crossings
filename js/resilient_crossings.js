@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    /*
-    your code will go here
-    */
-    
+    var map = L.map("map").setView([40.03, -105.36], 13);
+
+    L.esri.basemapLayer("Topographic").addTo(map);
+
 });

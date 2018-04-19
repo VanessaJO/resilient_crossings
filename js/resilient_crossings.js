@@ -3,7 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     L.esri.basemapLayer("Topographic").addTo(map);
 
-    // add a map service such as streams from Boulder County
+    // add a map service such as streams and ditches from Boulder County
+    var streams = L.esri.featureLayer({
+        url: 'http://maps.bouldercounty.org/arcgis/rest/services/HYDRO/STREAMS_DITCHES/MapServer/0',
+    }).addTo(map);
 
     // Fourmile Creek Watershed
     var waterShed = L.esri.featureLayer({

@@ -10,3 +10,9 @@ body {
     right:0; 
     left:0; 
 }
+
+#title{
+    background-color: dimgray;
+    color: whitesmoke;
+    
+}

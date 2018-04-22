@@ -33,27 +33,23 @@ h2{
     color: whitesmoke;
 }
 
-#footer {
+.footer {
     background-color: #6f7174;
-    padding: 25px;
 }
 
-
-#footer a {
-    margin-left: 55px;
+#fourmileIcon {
+    margin-left: 850px;
 }
 
-/*
-#footer a:link {
-color: #9ec754;
+#website a {
+    margin-left: 725px;
 }
 
-#footer a:visited {
-color: #9ec754;
+#website a:link {
+    color: #9ec754;
 }
-*/
 
-#footer a:hover {
+#website a:hover {
     color: #9ec754;
 }
 

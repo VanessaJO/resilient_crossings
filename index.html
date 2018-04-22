@@ -28,17 +28,34 @@
 
         <!-- Reference my JavaScript file-->
         <script src="js/resilient_crossings.js"></script>
-
     </head>
 
     <body>
+        <!-- Title -->
         <div id="header">
             <h1>Fourmile Watershed Coalition</h1>
             <h2><em>Resilient</em> Stream Crossings</h2>
         </div>
 
+        <!-- My map container-->
         <div id="map"></div>
 
+        <!-- Switching basemaps -->
+        <div id="basemaps-wrapper" class="leaflet-bar">
+            <select name="basemaps" id="basemaps" onChange="changeBasemap(basemaps)">
+                <option value="Topographic">Topographic</option>
+                <option value="Streets">Streets</option>
+                <option value="NationalGeographic">National Geographic</option>
+                <option value="Oceans">Oceans</option>
+                <option value="Gray">Gray</option>
+                <option value="DarkGray">Dark Gray</option>
+                <option value="Imagery">Imagery</option>
+                <option value="ImageryClarity">Imagery (Clarity)</option>
+                <option value="ShadedRelief">Shaded Relief</option>
+            </select>
+        </div>
+
+        <!-- Footer -->
         <div id="footer">
             <a target="_blank" href="http://fourmilewatershed.org/">Click here to learn more about Fourmile Watershed Coalition</a>
         </div>

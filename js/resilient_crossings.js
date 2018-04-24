@@ -56,28 +56,36 @@ document.addEventListener('DOMContentLoaded', function () {
     */
 
     // add a feature service: Fourmile Creek Watershed
-    var waterShed = L.esri.featureLayer({
-        url: 'https://services.arcgis.com/YseQBnl2jq0lrUV5/ArcGIS/rest/services/Fourmile_Creek_Watershed/FeatureServer/2'
+    var waterShed = 'https://services.arcgis.com/YseQBnl2jq0lrUV5/ArcGIS/rest/services/Fourmile_Creek_Watershed/FeatureServer/2';
+    L.esri.featureLayer({
+        url: waterShed
     }).addTo(map);
 
-    // add a feature service: Fire Stations
+    // 1) add a feature service: Fire Stations
     var fireStations = L.esri.featureLayer({
         url: 'https://services.arcgis.com/YseQBnl2jq0lrUV5/ArcGIS/rest/services/Fourmile_Creek_Watershed/FeatureServer/1'
     }).addTo(map);
+  
+    // 2) customize popup for Fire Stations feature layer
+    var popupFireStations = '<strong>{Station_Na}</strong><br>{Address}<br>{Phone}<br><small>Chief: {Chief}<br>Captain: {Captain}<br>Paid Employees: {Paid_Emplo}<br>Volunteers: {Volunteers}<br>Equipment: {Equipment}<small>';
 
-    // customize popups on a feature layer: Fire Stations
-    fireStations.bindPopup(function (layer) {
-        return L.Util.template('<p>District: {District}<br>Chief: {Chief}<br>Website: {Website1}<br>Address: {Address}<br>Captain: {Captain}<br>Phone: {Phone}<br>Paid Employees: {Paid_Emplo}<br>Volunteers: {Volunteers}<br>Station Name: {Station_Na}<br>Equipment: {Equipment}<br></p>', layer.feature.properties);
+    // 3) bind popup for Fire Stations feature layer
+    fireStations.bindPopup(function(e) {
+        return L.Util.template(popupFireStations, e.feature.properties)
     });
 
-    // add a feature service: Bridges and Culverts
+    // 1) add a feature service: Bridges and Culverts
     var bridgesCulverts = L.esri.featureLayer({
         url: 'https://services.arcgis.com/YseQBnl2jq0lrUV5/ArcGIS/rest/services/Fourmile_Creek_Watershed/FeatureServer/0'
     }).addTo(map);
 
-    // customize popups on a feature layer: Bridges and Culverts
-    bridgesCulverts.bindPopup(function (layer) {
-        return L.Util.template('<p>Address: {Address}<br>Access Type: {AccessType}<br>Material: {ConstType}<br>Width: {Width}<br>Span: {Span}<br>Railings: {Railings}<br>Wt Limit: {WtLimit}<br>Damage: {Damage}<br>Response: {Response}</p>', layer.feature.properties);
+    // 2) customize popup for Bridges and Culverts feature layer
+    var popupBridgesCulverts = '<strong>{AccessType}</strong><br>{Address}<br>Damage: {Damage}<br>Response: {Response}<br><small>Material: {ConstType}<br>Width: {Width}<br>Span: {Span}<br>Railings: {Railings}<br>Wt Limit: {WtLimit}<small>';
+
+    // 3) bind popup for Bridges and Culverts feature layer
+    bridgesCulverts.bindPopup(function(e) {
+        return L.Util.template(popupBridgesCulverts, e.feature.properties)
     });
+
 
 });

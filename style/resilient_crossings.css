@@ -13,14 +13,21 @@ body {
 }
 
 #header{
+    position: fixed;
+    z-index: 401;
+    margin-left: 55px;
+    margin-top: 10px;
     background-color: #6f7174;
     color: whitesmoke;
     padding: 15px;
+    padding-bottom: 1px;
+    border-radius: 5px;
+    box-shadow: 8px 8px 10px #888888;
 }
 
 h1{
     display: inline;
-    margin-left: 50px;
+    margin-left: 15px;
     /*text-transform: uppercase;*/
     font-weight: normal;
     color: whitesmoke;
@@ -31,6 +38,14 @@ h2{
     margin-left: 100px;
     font-weight: normal;
     color: whitesmoke;
+}
+
+#location-info{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    font-weight: normal;
+    color: whitesmoke;   
 }
 
 .footer {
@@ -49,19 +64,58 @@ h2{
     color: #9ec754;
 }
 
+#website a:visited {
+    color: whitesmoke;
+}
+
 #website a:hover {
     color: #9ec754;
 }
 
+.floater {
+    position: absolute;
+    z-index: 999;
+}
+
+#buttonContainer {
+    position: fixed;
+    z-index: 403; 
+    top: 155px;
+    left: 3px;
+}
+
+#buttonContainer img {
+    margin-right: 5px;
+    width: 25px;
+}
+
+#fourmileButton {
+    margin: 8px;
+    padding: 6px;
+    background-color: #9ec754;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 2px solid rgba(0,100,0,0.5);
+    box-shadow: 8px 8px 10px #888888;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #9ec754;
+    color: white;
+}
+
 #basemaps-wrapper {
     position: fixed;
-    top: 10px;
+    top: 15px;
     right: 10px;
-    z-index: 400;
-    background: white;
+    z-index: 402;
+    background: #9ec754;
     padding: 10px;
     box-shadow: 8px 8px 10px #888888;
 }
+
 #basemaps {
     margin-bottom: 5px;
 }

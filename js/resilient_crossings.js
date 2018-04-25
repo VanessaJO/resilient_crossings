@@ -1,9 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var map = L.map("map").setView([40.03, -105.42], 13); // ([lat, lon], initial zoom level)
+    var map = L.map("map").setView([40.03, -105.42], 11); // ([lat, lon], initial zoom level)
 
     var layer = L.esri.basemapLayer('Topographic').addTo(map);
 
     var layerLabels;
+
+    // a button click and function to center around Fourmile Canyon
+    document.getElementById("fourmileButton").onclick = function(){
+        map.setView([40.03, -105.42], 13);
+    };
 
     // function to switch basemaps
     function setBasemap(basemap) {

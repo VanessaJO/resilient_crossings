@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
 
-    // B1) function to switch basemaps
+    // B1) create the function to switch basemaps
     function setBasemap(basemap) {
         if (layer) {
             map.removeLayer(layer);
         }
 
-        layer = L.esri.basemapLayer(basemap);
+        layer = L.esri.basemapLayer(basemap.target.value);
 
         map.addLayer(layer);
 
@@ -37,6 +37,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // B2) now that the function is defined above, call it when one of the basemap options is selected 
+    document.getElementById("basemaps").onchange = setBasemap;
+
+    // B3) now add the function that is called from setBasemap
+    // this function accepts 1 parameter: basemaps
     function changeBasemap(basemaps){
         console.log(basemaps.value);
         var basemap = basemaps.value;
@@ -87,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }).addTo(map);
 
     // F2) customize popup for Bridges and Culverts feature layer
-    var popupBridgesCulverts = '<strong>{AccessType}</strong><br>{Address}<br>Damage: {Damage}<br>Response: {Response}<br><small>Material: {ConstType}<br>Width: {Width}<br>Span: {Span}<br>Railings: {Railings}<br>Wt Limit: {WtLimit}<small>';
+    var popupBridgesCulverts = "<strong>{AccessType}</strong><br>{Address}<br>Damage: {Damage}<br>Response: {Response}<br><small>Material: {ConstType}<br>Width: {Width}<br>Span: {Span}<br>Railings: {Railings}<br>Wt Limit: {WtLimit}<small><img src='{picUrl}'>";
 
     // F3) bind popup for Bridges and Culverts feature layer
     bridgesCulverts.bindPopup(function(e) {
@@ -109,27 +114,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
     // H1) The Geosearch control can also search for results from a variety of sources including Feature Layers and Map Services. This is done with plain text matching and is not "real" geocoding. But it allows you to mix custom results into a search box.
-    var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider({
+    var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
+    var resilientCrossings = L.esri.Geocoding.featureLayerProvider({
         url: 'https://services.arcgis.com/YseQBnl2jq0lrUV5/ArcGIS/rest/services/Fourmile_Creek_Watershed/FeatureServer/0',
         searchFields: ['AccessType', 'Damage'], // Search these fields for text matches
-        label: 'Bridges', // Group suggestions under this header
-        formatSuggestion: function(feature){
-            return feature.properties.AccessType + ' - ' + feature.properties.Damage; // format suggestions like this
-        }
-    });
-    var gisDay = L.esri.Geocoding.featureLayerProvider({
-        url: 'https://services.arcgis.com/YseQBnl2jq0lrUV5/ArcGIS/rest/services/Fourmile_Creek_Watershed/FeatureServer/0',
-        searchFields: ['AccessType', 'Damage'], // Search these fields for text matches
-        label: 'Bridges', // Group suggestions under this header
+        label: 'Search for Bridges or Culverts', // Group suggestions under this header
         formatSuggestion: function(feature){
             return feature.properties.AccessType + ' - ' + feature.properties.Damage; // format suggestions like this
         }
     });
 
     L.esri.Geocoding.Controls.geosearch({
-        providers: [arcgisOnline, gisDay] // will geocode via ArcGIS Online and search the GIS Day feature service.
+        providers: [arcgisOnline, Fourmile_Creek_Watershed] // will geocode via ArcGIS Online and search the Fourmile_Creek_Watershed feature service
     }).addTo(map);
-
+    
 });

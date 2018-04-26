@@ -131,6 +131,14 @@ button:hover {
     margin-right: 5px;
 }
 
+#watershed img {
+    margin-right: 5px;
+}
+
+#fireStation img {
+    margin-right: 5px;
+}
+
 #basemaps-wrapper {
     position: fixed;
     top: 15px;

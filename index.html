@@ -26,12 +26,16 @@
                 crossorigin=""></script>
 
         <!-- Load Esri Leaflet Geocoder Plugin -->
-        <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.9/dist/esri-leaflet-geocoder.css">
-        <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.8"></script>
+        <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.9/dist/esri-leaflet-geocoder.css"
+              integrity="sha512-v5YmWLm8KqAAmg5808pETiccEohtt8rPVMGQ1jA6jqkWVydV5Cuz3nJ9fQ7ittSxvuqsvI9RSGfVoKPaAJZ/AQ=="
+              crossorigin="">
+        <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.9/dist/esri-leaflet-geocoder.js"
+                integrity="sha512-QXchymy6PyEfYFQeOUuoz5pH5q9ng0eewZN8Sv0wvxq3ZhujTGF4eS/ySpnl6YfTQRWmA2Nn3Bezi9xuF8yNiw=="
+                crossorigin=""></script>
 
-        <!-- Load Esri Leaflet Geosearch Control Plugin -->
-        <link rel="stylesheet" href="./esri-leaflet-geocoder.css">
-        <script src="./esri-leaflet-geocoder.js"></script>
+        <!-- Load Esri Leaflet Geosearch Control Plugin 
+<link rel="stylesheet" href="./esri-leaflet-geocoder.css">
+<script src="./esri-leaflet-geocoder.js"></script> -->
 
         <!-- Reference my CSS file-->
         <link rel="stylesheet" href="style/resilient_crossings.css" />
@@ -41,7 +45,7 @@
     </head>
 
     <body>
-        <!-- Title -->
+        <!-- My title -->
         <div id="header">
             <h1>Fourmile Watershed Coalition</h1>
             <!-- <h2>Resilient Stream Crossings</h2> -->
@@ -50,11 +54,15 @@
         </div>
 
         <!-- My map container-->
-        <div id="map">        
+        <div id="map">
+
+            <!-- My home button -->
             <div id="buttonContainer" class="floaterButton">
                 <button id="fourmileButton">
                     <img src="http://frccbcc.maps.arcgis.com/sharing/rest/content/items/cb216616afe64d0986f9e9dedf2ec29b/data">Fourmile Canyon</button>
             </div>
+
+            <!-- My legend -->
             <div id="legend" class="floaterLegend">
                 <label id="bridge"><img src="http://frccbcc.maps.arcgis.com/sharing/rest/content/items/950746beea584c418439f6a75b904f86/data" alt="red points symbolize bridges" width="25">Bridge</label><br>
                 <label id="culvert"><img src="http://frccbcc.maps.arcgis.com/sharing/rest/content/items/75ba9eb22fbf4f8c937bbdd7386d3465/data" alt="yellow points symbolize culverts" width="25">Culvert</label><br>
@@ -78,7 +86,7 @@
             </select>
         </div>
 
-        <!-- Footer -->
+        <!-- My footer -->
         <div class="footer">
             <div id="fourmileIcon">
                 <a target="_blank" href="http://fourmilewatershed.org/"><img src="http://frccbcc.maps.arcgis.com/sharing/rest/content/items/cb216616afe64d0986f9e9dedf2ec29b/data" alt="fourmile watershed coalition icon"></a>

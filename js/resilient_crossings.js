@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    var map = L.map('map').setView([40.03, -105.42], 11); // ([lat, lon], initial zoom level)
+    var map = L.map('map')
+    
+    map.setView([40.03, -105.42], 11); // ([lat, lon], initial zoom level)
+    
+    // do the same thing but with method chaining
+    // var map = L.map('map').setView([40.03, -105.42], 11); // ([lat, lon], initial zoom level)
 
     var layer = L.esri.basemapLayer('Topographic').addTo(map);
 
@@ -17,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             map.removeLayer(layer);
         }
 
-        layer = L.esri.basemapLayer(basemap.target.value);
+        layer = L.esri.basemapLayer(basemap.target.value); // had to add .target.value to basemap event
 
         map.addLayer(layer);
 
@@ -92,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }).addTo(map);
 
     // F2) customize popup for Bridges and Culverts feature layer
-    var popupBridgesCulverts = "<strong>{AccessType}</strong><br>{Address}<br>Damage: {Damage}<br>Response: {Response}<br><small>Material: {ConstType}<br>Width: {Width}<br>Span: {Span}<br>Railings: {Railings}<br>Wt Limit: {WtLimit}<small><img src='{picUrl}'>";
+    var popupBridgesCulverts = "<strong>{AccessType}</strong><br>{Address}<br>Damage: {Damage}<br>Response: {Response}<br><small>Material: {ConstType}<br>Width: {Width}<br>Span: {Span}<br>Railings: {Railings}<br>Wt Limit: {WtLimit}<small>";
 
     // F3) bind popup for Bridges and Culverts feature layer
     bridgesCulverts.bindPopup(function(e) {
@@ -100,13 +105,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // G1) GeoCode: create the geocoding control and add it to the map
+    // G1) GeoCode (aka: Address Search): create the geocoding control and add it to the map
     var searchControl = L.esri.Geocoding.geosearch().addTo(map);
 
-    // G2) GeoCode: create an empty layer group to store the results and add it to the map
+    // G2) GeoCode (aka: Address Search): create an empty layer group to store the results and add it to the map
     var results = L.layerGroup().addTo(map);
 
-    // G3) GeoCode: listen for the results event and add every result to the map
+    // G3) GeoCode (aka: Address Search): listen for the results event and add every result to the map
     searchControl.on("results", function(data) {
         results.clearLayers();
         for (var i = data.results.length - 1; i >= 0; i--) {

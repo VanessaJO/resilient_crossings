@@ -13,7 +13,7 @@ body {
 }
 
 #header{
-    position: fixed;
+    position: absolute;
     z-index: 401;
     margin-left: 55px;
     margin-top: 10px;
@@ -53,11 +53,11 @@ h2{
 }
 
 #fourmileIcon {
-    margin-left: 850px;
+    margin-left: 175px;
 }
 
 #website a {
-    margin-left: 725px;
+    margin-left: 50px;
 }
 
 #website a:link {

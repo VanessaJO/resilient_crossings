@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     var map = L.map('map')
-    
+
     map.setView([40.03, -105.42], 11); // ([lat, lon], initial zoom level)
-    
+
     // do the same thing but with method chaining
     // var map = L.map('map').setView([40.03, -105.42], 11); // ([lat, lon], initial zoom level)
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // A1) a button click and function to center around Fourmile Canyon
     document.getElementById("fourmileButton").onclick = function(){
-        map.setView([40.03, -105.42], 13);
+        map.setView([40.04, -105.43], 13);
     };
 
 
@@ -121,17 +121,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // H1) The Geosearch control can also search for results from a variety of sources including Feature Layers and Map Services. This is done with plain text matching and is not "real" geocoding. But it allows you to mix custom results into a search box.
     var arcgisOnline = L.esri.Geocoding.arcgisOnlineProvider();
-    var resilientCrossings = L.esri.Geocoding.featureLayerProvider({
+    var searchResilientCrossings = L.esri.Geocoding.featureLayerProvider({
         url: 'https://services.arcgis.com/YseQBnl2jq0lrUV5/ArcGIS/rest/services/Fourmile_Creek_Watershed/FeatureServer/0',
-        searchFields: ['AccessType', 'Damage'], // Search these fields for text matches
-        label: 'Search for Bridges or Culverts', // Group suggestions under this header
+        searchFields: ['ConstType'], // Search these fields for text matches
+        label: 'Search for Type of Material - Wood, Concrete, or Steel', // Group suggestions under this header
+        bufferRadius: 250,
         formatSuggestion: function(feature){
-            return feature.properties.AccessType + ' - ' + feature.properties.Damage; // format suggestions like this
+            return feature.properties.ConstType; // format suggestions like this
         }
     });
 
-    L.esri.Geocoding.Controls.geosearch({
-        providers: [arcgisOnline, Fourmile_Creek_Watershed] // will geocode via ArcGIS Online and search the Fourmile_Creek_Watershed feature service
+    L.esri.Geocoding.geosearch({
+        providers: [arcgisOnline, searchResilientCrossings] // will geocode via ArcGIS Online and search the Fourmile_Creek_Watershed feature service
     }).addTo(map);
-    
+
 });

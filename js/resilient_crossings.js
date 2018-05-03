@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // C1) add a map service: Streams and Ditches from Boulder County
     var streams = L.esri.dynamicMapLayer({
-        url: 'http://maps.bouldercounty.org/arcgis/rest/services/HYDRO/STREAMS_DITCHES/MapServer',
+        url: 'https://maps.bouldercounty.org/arcgis/rest/services/HYDRO/STREAMS_DITCHES/MapServer',
         opacity: 0.55
     }).addTo(map);
 
